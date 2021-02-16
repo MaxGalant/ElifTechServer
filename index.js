@@ -26,10 +26,9 @@ app.get("/bank", (req, res) => {
   const sqlSelect = "SELECT * FROM  `bank`";
   db.query(sqlSelect, (err, result) => {
     if (err) {
-      if (err) {
-        return res.status(500).send({ error: err });
-      }
+      return res.status(500).send({ error: err });
     }
+
     res.send(result);
   });
 });
@@ -38,10 +37,9 @@ app.get("/bank/:Id", (req, res) => {
   const sqlSelect = "SELECT * FROM  `bank` WHERE Id=?";
   db.query(sqlSelect, ID, (err, result) => {
     if (err) {
-      if (err) {
-        return res.status(500).send({ error: err });
-      }
+      return res.status(500).send({ error: err });
     }
+
     res.send(result);
   });
 });
@@ -59,9 +57,7 @@ app.post("/create_bank", (req, res) => {
     [name, interest_rate, max_loan, min_down_payment, loan_term],
     (err, result) => {
       if (err) {
-        if (err) {
-          return res.status(500).send({ error: err });
-        }
+        return res.status(500).send({ error: err });
       }
       res.send(result);
       console.log("Result", result);
@@ -75,9 +71,7 @@ app.delete("/delete/bank/:Id/:bankName", (req, res) => {
   const sqlDelete = "DELETE FROM bank WHERE name=? AND Id=?";
   db.query(sqlDelete, [name, Id], (err, result) => {
     if (err) {
-      if (err) {
-        return res.status(500).send({ error: err });
-      }
+      return res.status(500).send({ error: err });
     } else {
       res.send(result);
       console.log("Delete", result);
@@ -91,9 +85,7 @@ app.put("/update/name/:Id", (req, res) => {
   const sqlUpdate = "UPDATE bank SET name=? WHERE Id=?  ";
   db.query(sqlUpdate, [name, ID], (err, result) => {
     if (err) {
-      if (err) {
-        return res.status(500).send({ error: err });
-      }
+      return res.status(500).send({ error: err });
     } else {
       res.send(result);
       console.log(result);
@@ -106,9 +98,7 @@ app.put("/update/rate/:Id", (req, res) => {
   const sqlUpdate = "UPDATE bank SET interest_rate=? WHERE Id=?  ";
   db.query(sqlUpdate, [rate, ID], (err, result) => {
     if (err) {
-      if (err) {
-        return res.status(500).send({ error: err });
-      }
+      return res.status(500).send({ error: err });
     } else {
       res.send(result);
 
@@ -122,9 +112,7 @@ app.put("/update/max_loan/:Id", (req, res) => {
   const sqlUpdate = "UPDATE bank SET max_loan=? WHERE Id=?  ";
   db.query(sqlUpdate, [max_loan, ID], (err, result) => {
     if (err) {
-      if (err) {
-        return res.status(500).send({ error: err });
-      }
+      return res.status(500).send({ error: err });
     } else {
       res.send(result);
 
@@ -139,9 +127,7 @@ app.put("/update/min_loan/:Id", (req, res) => {
   const sqlUpdate = "UPDATE bank SET min_down_payment=? WHERE Id=?  ";
   db.query(sqlUpdate, [min_loan, ID], (err, result) => {
     if (err) {
-      if (err) {
-        return res.status(500).send({ error: err });
-      }
+      return res.status(500).send({ error: err });
     } else {
       res.send(result);
 
@@ -155,9 +141,7 @@ app.put("/update/loan_term/:Id", (req, res) => {
   const sqlUpdate = "UPDATE bank SET loan_term=? WHERE Id=?  ";
   db.query(sqlUpdate, [loan_term, ID], (err, result) => {
     if (err) {
-      if (err) {
-        return res.status(500).send({ error: err });
-      }
+      return res.status(500).send({ error: err });
     } else {
       res.send(result);
 
